@@ -16,7 +16,7 @@ use App\Models\Recipe;
 
 // All recipes
 Route::get('/', function () {
-    return view('main', [
+    return view('recipes', [
         'heading' => 'All recipes!',
         'recipes' => Recipe::all()
     ]);

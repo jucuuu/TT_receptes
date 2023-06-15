@@ -8,7 +8,7 @@
 
 @foreach($recipes as $recipe) 
 <h2>
-    <a href='/recipes/{{$recipe['id']}}'>{{$recipe['title']}}</a>
+    <a href='/recipes/{{$recipe['id']}}' class="font-semibold underline">{{$recipe['title']}}</a>
 </h2>
 <p>{{$recipe['description']}}</p>
 @endforeach
