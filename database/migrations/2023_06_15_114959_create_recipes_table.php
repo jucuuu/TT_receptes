@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('keyword_type_recipe', function (Blueprint $table) {
-            $table->id('id');
-            $table->bigInteger('recipe_id');
-            $table->bigInteger('keyword_type_id');
+        Schema::create('recipes', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('description');
+            $table->longText('steps');
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('keyword_type_recipe');
+        Schema::dropIfExists('recipes');
     }
 };

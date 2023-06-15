@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Recipe;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// All recipes
 Route::get('/', function () {
-    return view('welcome');
+    return view('main', [
+        'heading' => 'All recipes!',
+        'recipes' => Recipe::all()
+    ]);
+});
+
+// Single recipe
+Route::get('/recipes/{id}', function ($id) {
+    return view('recipe', [
+        'recipe' => Recipe::find($id)
+    ]);
 });
