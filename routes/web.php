@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RecipeController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Recipe;
 
@@ -14,17 +15,32 @@ use App\Models\Recipe;
 |
 */
 
+// Common Resource Routes:
+// index - Show all recipes
+// show - Show single recipe
+// create - Show form to create new recipe
+// store - Store new recipe
+// edit - Show form to edit recipe
+// update - Update recipe
+// destroy - Delete recipe
+
 // All recipes
-Route::get('/', function () {
-    return view('recipes', [
-        'heading' => 'All recipes!',
-        'recipes' => Recipe::all()
-    ]);
-});
+Route::get('/', [RecipeController::class, 'index']);
+
+// Show create form
+Route::get('/recipes/create', [RecipeController::class, 'create']);
+
+// Store recipe data
+Route::post('/recipes', [RecipeController::class, 'store']);
+
+// Show edit form
+Route::get('/recipes/{recipe}/edit', [RecipeController::class, 'edit']);
+
+// Update edited recipe
+Route::put('/recipes/{recipe}', [RecipeController::class, 'update']);
+
+// Delete recipe
+Route::delete('/recipes/{recipe}', [RecipeController::class, 'destroy']);
 
 // Single recipe
-Route::get('/recipes/{id}', function ($id) {
-    return view('recipe', [
-        'recipe' => Recipe::find($id)
-    ]);
-});
+Route::get('/recipes/{recipe}', [RecipeController::class, 'show']);

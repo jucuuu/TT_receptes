@@ -19,7 +19,9 @@ class RecipeFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(3),
-            'steps' => $this->faker->paragraphs(2, true)
+            'steps' => $this->faker->paragraphs(2, true),
+            'type_tags' => 'cake, dessert, something',
+            'ingredient_tags' => 'flour, eggs, something, everything'
         ];
     }
 }

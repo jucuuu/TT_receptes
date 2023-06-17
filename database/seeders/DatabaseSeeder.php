@@ -28,18 +28,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Recipe::factory(4)->create();
-        Recipe::create([
-            'id' => 5,
-            'title' => 'Strawberry shortcake',
-            'description' => 'Scrumdiddlyumptious cake',
-            'steps' => '1. Get ingredients. 2. Mix. 3. Bake. 4. Done.',
-        ]);
-        Recipe::create([
-            'id' => 6,
-            'title' => 'Pilaf',
-            'description' => 'Scrumdiddlyumptious pilaf',
-            'steps' => '1. Get ingredients. 2. Cook. 3. Done.',
-        ]);
         
     }
 }
