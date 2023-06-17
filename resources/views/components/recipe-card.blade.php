@@ -5,7 +5,7 @@
         <img
             class="hidden w-48 mr-6 md:block"
             src="{{$recipe->cover ? asset('storage/'.$recipe->cover) :
-            asset('/images/default/gnocchi.jpg')}}"
+            asset('/images/gnocchi.jpg')}}"
             alt=""
         />
         <div>

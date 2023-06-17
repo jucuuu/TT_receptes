@@ -11,7 +11,7 @@
             <img
                 class="w-48 mr-6 mb-6"
                 src="{{$recipe->cover ? asset('storage/'.$recipe->cover) :
-                asset('/images/default/gnocchi.jpg')}}"
+                asset('/images/gnocchi.jpg')}}"
                 alt=""
             />
 

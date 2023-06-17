@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('cover')->nullable();
-            $table->string('description');
+            $table->longText('description');
             $table->longText('steps');
             $table->string('type_tags');
             $table->string('ingredient_tags');
