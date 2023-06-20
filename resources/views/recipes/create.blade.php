@@ -58,6 +58,45 @@
         </div>
 
         <div class="mb-6">
+            <label for="type_tags" class="inline-block text-lg mb-2" id="type_t">
+                Dish types:
+            </label>
+
+            <select onchange="getTypeSelect()" id="types">
+                <option selected disabled>Select at least one option</option>
+                @foreach($types as $type)
+                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                @endforeach
+           </select>
+
+            <script>
+                function getTypeSelect() {
+                    var sel = document.getElementById("types");
+                    var text = sel.options[sel.selectedIndex].text;
+                    e = document.createElement("div");
+                    e.setAttribute("id", sel.value);
+                    e.classList.add('type_added', 'bg-gray-50', 'border', 'border-gray-200', 'rounded', 'p-2', 'text-center');
+                    e.classList.add(sel.value.toString());
+                    e.innerHTML = text;
+                    var remove = document.createElement("a");
+                    remove.innerHTML = 'X';
+                    remove.classList.add('text-red-500', 'pl-1');
+                    remove.href = "#";
+                    remove.setAttribute("onclick", "addTypeBack('"+sel.value.toString()+"')");
+                    e.appendChild(remove);
+                    document.getElementById("type_t").appendChild(e);
+                    var option = sel.selectedOptions[0];
+                    option.disabled = true;
+                }
+                function addTypeBack(id) {
+                    var inte = parseInt(id);
+                    document.getElementById("types").options[inte].disabled = false;
+                    document.getElementById(id).remove();
+                }
+            </script>
+        </div>
+
+        <div class="mb-6">
             <label for="ingredient_tags" class="inline-block text-lg mb-2">
                 Ingredient tags (Comma Separated)
             </label>

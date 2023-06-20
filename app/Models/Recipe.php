@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Comment;
+use App\Models\Type;
+use App\Models\Ingredient;
+use App\Models\Measurement;
 
 class Recipe extends Model
 {
@@ -39,5 +42,17 @@ class Recipe extends Model
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function ingredients() {
+        return $this->belongsToMany(Ingredient::class);
+    }
+
+    public function types() {
+        return $this->belongsToMany(Type::class);
+    }
+
+    public function measurements() {
+        return $this->belongsToMany(Measurement::class);
     }
 }

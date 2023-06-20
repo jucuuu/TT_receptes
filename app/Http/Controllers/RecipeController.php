@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Recipe;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Type;
 
 class RecipeController extends Controller
 {
@@ -26,7 +27,9 @@ class RecipeController extends Controller
 
     // Show create form
     public function create() {
-        return view('recipes.create');
+        return view('recipes.create', [
+            'types' => Type::all()
+        ]);
     }
 
     // Store recipe data

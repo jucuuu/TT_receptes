@@ -1,7 +1,9 @@
 <x-layout>
 @include('partials._search')
-@include('partials._back')
 
+<div>
+    <a href="/" class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl mt-2 hover:text-black hover:border-black bg-sky-500 hover:bg-sky-600">Back</a>
+</div>
 
 <div class="mx-4">
     <x-card class="p-10">
@@ -22,7 +24,7 @@
             <x-recipe-ingredient-tags :tags_i="$recipe->ingredient_tags" class="bg-black text-white rounded-xl px-3 py-1 mr-2"/>
 
             <div class="text-lg my-4">
-                <i class="fa-solid fa-location-dot"></i> Author
+                <i>Author: </i> 
             </div>
             <div class="border border-gray-200 w-full mb-6"></div>
             <div>

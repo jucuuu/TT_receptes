@@ -1,4 +1,7 @@
 <x-layout>
+    <div>
+        <a href="{{ url()->previous() }}" class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl mt-2 hover:text-black hover:border-black bg-sky-500 hover:bg-sky-600">Back</a>
+    </div>
     <x-card class="p-10 max-w-lg mx-auto mt-24">
         <header class="text-center">
             <h2 class="text-2xl font-bold uppercase mb-1">
