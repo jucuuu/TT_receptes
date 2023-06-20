@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Comment;
 
 class Recipe extends Model
 {
@@ -26,5 +27,17 @@ class Recipe extends Model
                   ->orWhere('ingredient_tags', 'like', '%'. request('search'). '%')
                   ->orWhere('steps', 'like', '%'. request('search'). '%');
         }
+    }
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function sortComments() {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }
