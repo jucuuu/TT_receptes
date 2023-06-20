@@ -40,7 +40,7 @@
 
     <x-card class="mt-4 p-2 flex space-x-6">
         <a href="/recipes/{{$recipe->id}}/edit">
-            <i class="fa-solid fa-pencil">Edit</i>
+            <i>Edit</i>
         </a>
 
         <form method="POST" action="/recipes/{{$recipe->id}}">
@@ -51,6 +51,49 @@
             </button>
         </form>
     </x-card>
+
+    <x-card class="mx-4">
+        <div class="mb-6">
+            <form method="POST" action="{{ route('comments.store', ['recipe' => $recipe->id]) }}">
+                @csrf
+                <label
+                    for="content"
+                    class="inline-block text-lg mb-2">
+                    Leave a comment:
+                </label>
+                <textarea
+                    class="border border-gray-200 rounded p-2 w-full"
+                    name="content"
+                    rows="10"
+                    placeholder="Very delicious dish if I do say so myself.">
+                </textarea>
+                <input type="hidden" value="{{ $recipe->id }}" name="recipe_id">
+                <input type="submit" class="btn btn-success" value="Post comment"/>
+                @error('content')
+                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
+            </form>
+        </div>
+    </x-card>
+
+    @foreach ($comments as $comment)
+        <x-card>
+            <i>{{$comment->user->username}}</i><br>
+            {{$comment->content}}<br>
+            
+            <a href="{{ route('comments.edit', $comment) }}">
+                <i>Edit</i>
+            </a>
+
+            <form action="{{ route('comments.destroy', $comment->id) }}" method="post">
+                @csrf
+                @method('DELETE') 
+                <button class="text-red-500">
+                    <i>Delete</i>
+                </button>
+        </form>
+        </x-card>
+    @endforeach
 </div>
 
 </x-layout>

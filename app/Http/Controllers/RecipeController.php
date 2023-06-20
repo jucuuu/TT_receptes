@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Recipe;
+use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
@@ -18,7 +19,8 @@ class RecipeController extends Controller
     // Show single recipe
     public function show(Recipe $recipe) {
         return view('recipes.show', [
-            'recipe' => $recipe
+            'recipe' => $recipe,
+            'comments' => $recipe->comments->sortByDesc('created_at')
         ]);
     }
 

@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('avatar_url')->nullable();
+            $table->string('twitter_id')->nullable();
+            $table->string('twitter_token')->nullable();
+            $table->string('twitter_refresh_token')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -4,12 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Comment;
-use App\Models\KeywordIngredient;
-use App\Models\KeywordType;
 use App\Models\Recipe;
-use App\Models\Picture;
 use App\Models\User;
+use App\Models\Comment;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -28,6 +25,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Recipe::factory(4)->create();
+        Comment::factory(3)->create();
         
     }
 }

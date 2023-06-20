@@ -43,5 +43,11 @@
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
+
+        <x-primary-button class="ml-3">
+            <a href="/sign-in/twitter/redirect">
+                {{ __('Log in with Twitter') }}
+            </a>
+        </x-primary-button>
     </form>
 </x-guest-layout>
