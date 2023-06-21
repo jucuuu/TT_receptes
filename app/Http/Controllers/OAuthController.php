@@ -27,6 +27,7 @@ class OAuthController extends Controller
             'twitter_id' => $oAuthUser->getId(),
         ], [
             'name' => $oAuthUser->getName(),
+            'username' => $oAuthUser->getName(),
             'email' => $oAuthUser->getEmail(),
             'password' => Hash::make(Str::random(50)),
             'avatar_url' => $oAuthUser->getAvatar(),

@@ -13,7 +13,7 @@
 @endforeach
 
 @else
-    <p>No recipes posted yet!</p>
+    <p>{{__('msg.no recipes posted yet')}}!</p>
 @endunless
 
 </div>

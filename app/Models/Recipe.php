@@ -13,7 +13,7 @@ class Recipe extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'cover', 'description', 'type_tags',
+    protected $fillable = ['title', 'cover', 'user_id', 'description', 'type_tags',
         'ingredient_tags', 'steps'];
 
     public function scopeFilter($query, array $filters) {

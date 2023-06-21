@@ -38,7 +38,6 @@ class CommentController extends Controller
         ]);
 
         $comment->update($formFields);
-        $recipe = $comment->recipe;
 
         return redirect('/recipes/'.$comment->recipe_id)->with('message', 'Comment updated successfully!');
     }

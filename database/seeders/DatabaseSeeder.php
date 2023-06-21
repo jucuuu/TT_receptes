@@ -10,7 +10,8 @@ use App\Models\Comment;
 use App\Models\Type;
 use App\Models\Ingredient;
 use App\Models\Measurement;
-
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -20,16 +21,68 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory()->count(4)->create();
-
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        
+        // Roles:
+        $admin = Role::create(['name' => 'admin']);
+        $authorised = Role::create(['name' => 'authorised']);
 
+        // Create dummy users, give 'authorised' role by default:
+        User::factory()->count(4)->create();
         Recipe::factory(4)->create();
         Comment::factory(3)->create();
+
+        User::factory()->create([
+            'name' => 'Meow',
+            'username' => 'Meowzer',
+            'email' => 'meowzer@gmail.com',
+            'password' => Hash::make('11111111'),
+        ]);
+
+        User::factory()->create([
+            'name' => 'Meow2',
+            'username' => 'Meowzer2',
+            'email' => 'meowzer2@gmail.com',
+            'password' => Hash::make('22222222'),
+        ]);
+
+        $meowzer = User::where('username', 'Meowzer')->first();
+
+        // Permissions:
+        $post_recipe = Permission::create(['name' => 'post recipes']);
+        $edit_recipe = Permission::create(['name' => 'edit recipes']);
+        $post_comment = Permission::create(['name' => 'post comments']);
+        $edit_comment = Permission::create(['name' => 'edit comments']);
+        $delete_recipe = Permission::create(['name' => 'delete recipes']);
+        $register = Permission::create(['name' => 'register']);
+        $login = Permission::create(['name' => 'login']);
+        $logout = Permission::create(['name' => 'logout']);
+
+        $allPermissions = Permission::all();
+
+        // Grant roles to users:
+        $meowzer->assignRole('admin');
+        $users = User::all();
+        foreach($users as $user) {
+            $user->assignRole('authorised');
+        }
+
+        // Grant roles certain permissions:
+        $authorised->givePermissionTo('post recipes');
+        $authorised->givePermissionTo('post comments');
+        $authorised->givePermissionTo('edit recipes');
+        $authorised->givePermissionTo('logout');
         
+        $admin->givePermissionTo($allPermissions);
+        $admin->revokePermissionTo('register');
+        $admin->revokePermissionTo('login');
+        $authorised->revokePermissionTo('register');
+        $authorised->revokePermissionTo('login');
+
+
         // Dish types:
         $cake = new Type();
         $cake->name = 'cake';

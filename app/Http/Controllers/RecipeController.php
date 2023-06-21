@@ -46,6 +46,8 @@ class RecipeController extends Controller
             $formFields['cover'] = $request->file('cover')->store('images', 'public');
         }
 
+        $formFields['user_id'] = Auth::id();
+
         Recipe::create($formFields);
 
         return redirect('/')->with('message', 'Recipe posted successfully!');
@@ -63,7 +65,7 @@ class RecipeController extends Controller
             'description' => 'required',
             'type_tags' => 'required',
             'ingredient_tags' => 'required',
-            'steps' => 'required'
+            'steps' => 'required',
         ]);
 
         if($request->file('cover')) {
@@ -72,7 +74,7 @@ class RecipeController extends Controller
 
         $recipe->update($formFields);
 
-        return redirect('/recipes'.'/'.$recipe->id)->with('message', 'Recipe updated successfully!');
+        return redirect('/recipes/'.$recipe->id)->with('message', 'Recipe updated successfully!');
     }
 
     // Delete recipe
