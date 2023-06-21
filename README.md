@@ -1,1 +1,1 @@
-receptites :p
+Recepšu portāls
