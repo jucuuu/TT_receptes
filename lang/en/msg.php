@@ -73,4 +73,6 @@ return [
     'A new verification link has been sent to your email address.' => 'A new verification link has been sent to your email address.',
     'dashboard' => 'Dashboard',
     'You\'re logged in!' => 'You\'re logged in!',
+    'Forgot your password?' => 'Forgot your password?',
+    'Posted by' => 'Posted by'
 ];

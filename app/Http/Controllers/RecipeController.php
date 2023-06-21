@@ -13,7 +13,7 @@ class RecipeController extends Controller
     // Show all recipes
     public function index() {
         return view('recipes.index', [
-            'recipes' => Recipe::latest()->filter(request(['ttag', 'itag', 'search']))->paginate(4)
+            'recipes' => Recipe::latest()->filter(request(['ttag', 'itag', 'search']))->paginate(6)
         ]);
     }
 
@@ -43,6 +43,9 @@ class RecipeController extends Controller
         ]);
 
         if($request->file('cover')) {
+            $formFields['cover'] = $request->validate([
+                'cover' => 'mimes:jpeg,png,jpg|max:8192'
+            ]);
             $formFields['cover'] = $request->file('cover')->store('images', 'public');
         }
 
@@ -69,6 +72,9 @@ class RecipeController extends Controller
         ]);
 
         if($request->file('cover')) {
+            $formFields['cover'] = $request->validate([
+                'cover' => 'mimes:jpeg,png,jpg|max:8192'
+            ]);
             $formFields['cover'] = $request->file('cover')->store('images', 'public');
         }
 

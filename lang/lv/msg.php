@@ -75,5 +75,5 @@ return [
     'A new verification link has been sent to your email address.' => 'Jauna verifikācijas saite tika nosūtīta uz Jūsu e-pastu.',
     'dashboard' => 'Dešbords',
     'You\'re logged in!' => 'Jūs esat pieslēdzies!',
-
+    'Posted by' => 'Autors',
 ];

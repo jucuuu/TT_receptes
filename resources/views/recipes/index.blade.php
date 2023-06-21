@@ -3,7 +3,7 @@
 @include('partials._search')
 
 <div
-    class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4"
+    class="grid lg:grid-cols-3 gap-4 space-y-4 md:space-y-2 mx-4 md:grid-cols-2"
 >
 
 @unless(count($recipes) == 0)
